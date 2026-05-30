@@ -1,0 +1,7 @@
+# MicroPython & PyCharm System Files
+.idea/
+__pycache__/
+*.pyc
+
+# Local secrets (if you decide to separate them later)
+secrets.py
