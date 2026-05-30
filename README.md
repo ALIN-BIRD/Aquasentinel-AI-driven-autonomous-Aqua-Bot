@@ -28,3 +28,9 @@ An Edge-AI enabled, real-time autonomous water quality monitoring, evaluation, a
 ## 🛠️ Software Stack
 * **Language:** MicroPython
 * **Core Libraries:** `machine`, `network`, `usocket`, `ubinascii`, `onewire`, `ds18b20`
+
+## Hardware Setup
+![AquaSentinel Hardware Setup](media/Hardware_setup.png)
+![AquaSentinel Hardware Setup](media/Alert_notification.png)
+![AquaSentinel Hardware Setup](media/Powered_up.png)
+![AquaSentinel Hardware Setup](media/working_prototype.png)
