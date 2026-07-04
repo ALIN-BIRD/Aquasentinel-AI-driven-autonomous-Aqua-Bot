@@ -27,12 +27,12 @@
             background-color: var(--bg-deep-space);
             color: var(--text-pure);
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-            overflow: hidden; /* Prevents whole-page scrolling for a clean application feel */
+            overflow: hidden; 
             min-height: 100vh;
             position: relative;
         }
 
-        /* Ambient Kinetic Background Engine */
+       
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -43,16 +43,16 @@
             pointer-events: none;
         }
 
-        /* Master PC Workspace Layout Grid */
+    
         .workspace-grid {
             display: grid;
-            grid-template-columns: 450px 1fr; /* Fixed left telemetry pane, flexible right narrative content */
+            grid-template-columns: 450px 1fr; 
             height: 100vh;
             position: relative;
             z-index: 2;
         }
 
-        /* --- LEFT SIDEBAR PANEL: ANALYTICAL METRICS CONTROL --- */
+      
         .telemetry-sidebar {
             background: rgba(15, 23, 42, 0.6);
             border-right: 1px solid rgba(56, 189, 248, 0.15);
@@ -109,14 +109,13 @@
             margin-top: 6px;
         }
 
-        /* --- RIGHT CONTENT AREA: SCROLLING CHRONICLES --- */
         .main-scroller {
             padding: 40px 50px;
             overflow-y: auto;
             height: 100vh;
         }
 
-        /* Section Architecture Configuration */
+    
         .cyber-section {
             margin-bottom: 50px;
             max-width: 900px;
@@ -138,7 +137,7 @@
             display: block;
         }
 
-        /* Glassmorphic PC Dashboard Panels */
+
         .cyber-panel {
             background: var(--glass-panel);
             border: 1px solid var(--border-neon);
@@ -157,7 +156,7 @@
             box-shadow: 0 0 25px var(--electric-glow);
         }
 
-        /* Sidebar Matrix Highlights */
+
         .metric-hero {
             display: flex;
             align-items: baseline;
@@ -197,7 +196,6 @@
             line-height: 1.7;
         }
 
-        /* Grid Framework Columns for Widescreen Layout */
         .widescreen-row {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -235,7 +233,7 @@
             border: 1px solid rgba(56, 189, 248, 0.3);
         }
 
-        /* Interactive Expanded Telemetry Matrix */
+       
         .scrolling-datagrid {
             max-height: 280px;
             overflow-y: auto;
@@ -271,7 +269,7 @@
             color: var(--text-pure);
         }
 
-        /* --- WIDESCREEN STORY LINES ARCHITECTURE --- */
+  
         .story-timeline {
             position: relative;
             padding-left: 35px;
@@ -328,7 +326,7 @@
             margin-bottom: 8px;
         }
 
-        /* System Verification Keyframe Animations */
+
         @keyframes beacon {
             0%, 100% { transform: scale(1); opacity: 0.5; }
             50% { transform: scale(1.3); opacity: 1; }
@@ -343,7 +341,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Custom Scrollbar Interface Layout Extensions */
+    
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: var(--bg-deep-space); }
         ::-webkit-scrollbar-thumb { background: var(--border-neon); border-radius: 10px; }
@@ -516,7 +514,7 @@
         resizeCanvas();
 
         const dots = [];
-        const totalDots = 65; // Slightly dense constellation mapping for wider PC screens
+        const totalDots = 65;
 
         for(let i=0; i<totalDots; i++) {
             dots.push({
@@ -560,7 +558,7 @@
         }
         drawParticles();
 
-        // ChartJS Convergence Graph Configurations
+       
         const chartCtx = document.getElementById('lossChart').getContext('2d');
         new Chart(chartCtx, {
             type: 'line',
