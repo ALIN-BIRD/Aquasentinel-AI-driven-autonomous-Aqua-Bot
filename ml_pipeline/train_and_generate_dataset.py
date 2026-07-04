@@ -4,7 +4,6 @@ import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import MinMaxScaler
 
-# --- STEP 1: SYNTHETIC TELEMETRY DATA GENERATION (12,000 ROWS) ---
 print("=======================================================")
 print("🔄 RUNNING SYNTHETIC TELEMETRY GENERATION ENGINE...")
 print("=======================================================")
@@ -12,7 +11,6 @@ print("=======================================================")
 np.random.seed(42)
 num_rows = 12000
 
-# Generate tracking variables within normal operating boundaries
 ph = np.random.uniform(5.0, 10.0, num_rows)
 temp = np.random.uniform(20.0, 35.0, num_rows)
 turbidity_v = np.random.uniform(0.8, 1.4, num_rows)
@@ -21,7 +19,6 @@ distance_cm = np.random.uniform(1.0, 25.0, num_rows)
 
 threat_label = np.zeros(num_rows, dtype=int)
 
-# Inject mathematical classification boundaries based on hardware thresholds
 for i in range(num_rows):
     critical_ph = (ph[i] < 6.0 or ph[i] >= 8.5)
     critical_do = (dissolved_oxygen[i] < 3.0)
@@ -30,13 +27,12 @@ for i in range(num_rows):
 
     if critical_ph or critical_do or critical_turb or critical_lvl:
         threat_label[i] = 1
-        if np.random.rand() < 0.02:  # 2% variance signal noise
+        if np.random.rand() < 0.02: 
             threat_label[i] = 0
     else:
-        if np.random.rand() < 0.01:  # 1% anomaly bleed noise
+        if np.random.rand() < 0.01:  
             threat_label[i] = 1
 
-# Create Dataframe and export to local path
 df = pd.DataFrame({
     'pH': np.round(ph, 2),
     'Temperature': np.round(temp, 1),
@@ -51,21 +47,17 @@ df.to_csv(dataset_file, index=False)
 print(f"✅ Success! Matrix profiles saved to: {dataset_file}\n")
 
 
-# --- STEP 2: EDGE-AI COMPATIBLE MATHEMATICAL TRAINING ---
 print("=======================================================")
 print("🧠 INITIATING EMBEDDED MODEL OPTIMIZATION TRAINING...")
 print("=======================================================")
 
-# Load data array channels
 data = pd.read_csv(dataset_file)
 X = data[['pH', 'Temperature', 'Turbidity_V', 'Dissolved_Oxygen', 'Distance_CM']].values
 y = data['Threat_Label'].values
 
-# Scale metrics directly using absolute feature bounds to match MicroPython script scaling
 scaler = MinMaxScaler()
 X_scaled = scaler.fit_transform(X)
 
-# Fit linear model optimized for resource-constrained MCUs (saves processing space)
 model = LogisticRegression(max_iter=1000)
 model.fit(X_scaled, y)
 
